@@ -1,0 +1,35 @@
+.hentry .entry-content a:not(.button):not(.components-button) {
+  text-decoration: none; }
+
+.recommended-products {
+  background: #efefef;
+  padding: 25px 40px; }
+  .recommended-products * {
+    font-family: 'Roboto', sans-serif; }
+  .recommended-products h3 {
+    text-align: center; }
+  .recommended-products .col-md {
+    background: white; }
+    .recommended-products .col-md div {
+      width: 200px;
+      margin: auto;
+      max-width: 100%;
+      padding: 20px;
+      text-align: center; }
+      .recommended-products .col-md div p, .recommended-products .col-md div a {
+        text-align: left; }
+  .recommended-products img {
+    display: initial; }
+  .recommended-products a {
+    color: black; }
+    .recommended-products a:hover {
+      color: #007300; }
+    .recommended-products a.button-rec {
+      display: block;
+      text-decoration: none;
+      text-align: center !important;
+      border: 2px solid #007300;
+      padding: 7px 11px;
+      text-transform: uppercase;
+      color: black;
+      text-decoration: none; }
