@@ -30,16 +30,16 @@ class RecProducts {
     public function __construct() {
         add_action('admin_enqueue_scripts', array( $this,'rec_products_admin_styles') );
         add_action('admin_enqueue_scripts', array( $this,'media_uploader_enqueue') );
-        register_activation_hook(__FILE__, 'rec_products_options_install');
-        register_deactivation_hook( __FILE__, 'rec_products_options_remove_database' );
+        register_activation_hook(__FILE__, array($this ,'rec_products_options_install'));
+        register_deactivation_hook( __FILE__, array($this ,'rec_products_options_remove_database' ));
         add_action('admin_menu', array( $this,'rec_products_menu') );
         add_action('init', array( $this,'rec_products_post_type') );
         //add_action('enqueue_block_editor_assets', array( $this,'loadMyBlock') );
         add_action('admin_notices', array( $this, 'dependencies_acf' ) );
-        define('ROOTDIR', plugin_dir_path(__FILE__));
+        define('RECPRODUCTSMARCO', plugin_dir_path(__FILE__));
         add_shortcode('rec_products', array( $this,'render_rec_products') );
-        include 'style.php';
-        include 'frontend-style.php';
+        // include 'style.php';
+        // include 'frontend-style.php';
     }
 
     public function dependencies_acf() {
@@ -133,9 +133,9 @@ class RecProducts {
         $rows = $wpdb->get_results("SELECT * from $table_name");
         if (isset($_POST['delete'])) {
             $wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE id = %d", $id));
-            require_once(ROOTDIR . 'rec_products_list.php');
+            require_once(RECPRODUCTSMARCO . 'rec_products_list.php');
         }
-        require_once(ROOTDIR . 'rec_products_list.php');
+        require_once(RECPRODUCTSMARCO . 'rec_products_list.php');
 
     }
 
@@ -166,7 +166,7 @@ class RecProducts {
             }
 
         }
-        require_once(ROOTDIR . 'rec_products_create.php');
+        require_once(RECPRODUCTSMARCO . 'rec_products_create.php');
     }
 
     public function rec_products_update() {
@@ -202,7 +202,7 @@ class RecProducts {
             }
         }
 
-        require_once(ROOTDIR . 'rec_products_update.php');
+        require_once(RECPRODUCTSMARCO . 'rec_products_update.php');
     }
 
     public function render_rec_products() {
